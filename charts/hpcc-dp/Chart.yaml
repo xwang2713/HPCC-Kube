@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 name: hpccsystems
 version: 1.0.0
 appVersion: 7.4.20

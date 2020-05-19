@@ -17,44 +17,26 @@
 
 # [✖]  AWS::EKS::Cluster/ControlPlane: CREATE_FAILED – "Cannot create cluster 'hpcc1' because us-east-1e, the targeted availability zone, does not currently have sufficient capacity to support the cluster. Retry and choose from these availability zones: us-east-1a, us-east-1b, us-east-1c, us-east-1d, us-east-1f (Service: AmazonEKS; Status Code: 400; Error Code: UnsupportedAvailabilityZoneException; Request ID: 94324754-4460-4e06-941a-26553c3c23a0)"
 #us-east-1a us-east-1b us-east-1c us-east-1d but not us-east-1e
-export KUBE_ZONE=us-east-1b
-export KUBE_ZONE2=us-east-1c
-ZONE1=us-east-1a
-VPC_PUB_SUBNET1=subnet-05a2f12b
-ZONE2=us-east-1b
-VPC_PUB_SUBNET2=subnet-9e08ecd3
-ZONE3=us-east-1c
-VPC_PUB_SUBNET3=subnet-eaacfdb6
-ZONE4=us-east-1d
-VPC_PUB_SUBNET4=subnet-7b72261c
-ZONE5=us-east-1e
-VPC_PUB_SUBNET5=subnet-b836ae86
-ZONE6=us-east-1f
-VPC_PUB_SUBNET6=subnet-33d7d93c
-
+export KUBE_ZONE=us-east-2b
+export KUBE_ZONE2=us-east-2c
 eksctl create cluster \
-	--name hpcc-1 \
+	--name hpcc-2 \
 	--version 1.15 \
-	--region us-east-1 \
+	--region us-east-2 \
 	--nodegroup-name standard-workers \
 	--node-type m4.2xlarge \
-	--nodes 3 \
+	--nodes 2 \
 	--nodes-min 1 \
 	--nodes-max 4 \
 	--node-volume-size 100 \
 	--node-ami auto \
-	--vpc-public-subnets ${VPC_PUB_SUBNET3} \
-	--vpc-public-subnets ${VPC_PUB_SUBNET6} \
-	--node-security-groups sg-397a1a62 \
+	--vpc-public-subnets subnet-79e74a35 \
+	--vpc-public-subnets subnet-1f8bf165 \
+	--node-security-groups sg-d19891b0 \
 	--tags "application=hpccsystems,lifecycle=dev,market=hpccsystems" \
 	--tags "owner_email=xiaoming.wang@lexisnexis.com" \
 	--tags "support_email=xiaoming.wang@lexisnexis.com" \
 	--tags "product=hpccsystems,project=hpcc builds,service=eks"
-
-# these two subnets works
-#--vpc-public-subnets subnet-eaacfdb6 \
-#--vpc-public-subnets subnet-9e08ecd3 \
-
 #--node-security-groups strings
 # --region us-east-1 \
 # vpc setting can co-existi with zones settings

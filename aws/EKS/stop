@@ -17,7 +17,7 @@
 
 # Make sure both EKS and CloudFormation Stack resources are cleaned
 
-name=hpcc2
+name=hpcc3
 [ -n "$1" ] && name=$1
 #eksctl delete cluster hpcc1
 eksctl delete cluster $name

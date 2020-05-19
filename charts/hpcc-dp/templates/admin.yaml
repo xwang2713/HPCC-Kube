@@ -33,6 +33,13 @@ spec:  # specification of the pod’s contents
   containers:
     - name: {{ .Values.Admin.AppName }}
       image: {{ .Values.Admin.Image }}
+      resources:
+        limits: 
+          cpu: {{ .Values.Admin.Limits.CPU }}
+          memory: {{ .Values.Admin.Limits.Memory }}
+        requests:
+          cpu: {{ .Values.Admin.requests.CPU }}
+          memory: {{ .Values.Admin.requests.Memory }}
       ports:
       - name: {{ .Values.ConfigMgr.Name }}
         {{- if .Values.secure }}

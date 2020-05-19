@@ -1,0 +1,36 @@
+ZONE1=us-east-1a
+VPC_PUB_SUBNET1=subnet-05a2f12b
+
+ZONE2=us-east-1b
+VPC_PUB_SUBNET2=subnet-9e08ecd3
+
+ZONE3=us-east-1c
+VPC_PUB_SUBNET3=subnet-eaacfdb6
+
+ZONE4=us-east-1d
+VPC_PUB_SUBNET4=subnet-7b72261c
+
+ZONE5=us-east-1e
+VPC_PUB_SUBNET5=subnet-b836ae86
+
+ZONE6=us-east-1f
+VPC_PUB_SUBNET6=subnet-33d7d93c
+
+AZ_LIST="${ZONE3} ${ZONE6}"
+VPC_LIST="${VPC_PUB_SUBNET3} ${VPC_PUB_SUBNET6}" 
+USE_VPC=true # even set to true eksctl will select AZs without consider subnet AZs
+
+KUBE_VERSION=1.15
+CLUSTER_NAME=hpcc-dev-160
+
+NODE_TYPE=m4.2xlarge
+
+#Node Group
+NODES_MIN_NUM=1
+# max allowed are 100 for m4.2xlarge
+NODES_MAX_NUM=80
+NODES_START_NUM=2
+
+SECURITY_GROUPS="sg-397a1a62"
+
+COMMON_TAGS="application=hpccsystems,lifecycle=dev,market=hpccsystems,owner_email=xiaoming.wang@lexisnexis.com,support_email=xiaoming.wang@lexisnexis.com,product=hpccsystems,project=auto scaler nodes cluster,service=eks"

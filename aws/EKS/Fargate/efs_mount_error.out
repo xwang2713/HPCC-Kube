@@ -1,0 +1,78 @@
+ming@BCTWANGXI02-WXL:~/work/HPCC/HPCC_Builds/HPCC-23901-efs-helm-support/dockerfiles$ kubectl describe pod efs-provisioner-6cd687c676-lp7vk
+Name:                 efs-provisioner-6cd687c676-lp7vk
+Namespace:            default
+Priority:             2000001000
+Priority Class Name:  system-node-critical
+Node:                 fargate-ip-192-168-172-135.us-east-2.compute.internal/192.168.172.135
+Start Time:           Wed, 29 Apr 2020 23:05:54 -0400
+Labels:               app=efs-provisioner
+                      eks.amazonaws.com/fargate-profile=fp-default
+                      pod-template-hash=6cd687c676
+Annotations:          kubernetes.io/psp: eks.privileged
+Status:               Pending
+IP:
+Controlled By:        ReplicaSet/efs-provisioner-6cd687c676
+Containers:
+  efs-provisioner:
+    Container ID:
+    Image:          quay.io/external_storage/efs-provisioner:v2.2.0-k8s1.12
+    Image ID:
+    Port:           <none>
+    Host Port:      <none>
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      FILE_SYSTEM_ID:    <set to the key 'file.system.id' of config map 'efs-provisioner'>    Optional: false
+      AWS_REGION:        <set to the key 'aws.region' of config map 'efs-provisioner'>        Optional: false
+      DNS_NAME:          <set to the key 'dns.name' of config map 'efs-provisioner'>          Optional: true
+      PROVISIONER_NAME:  <set to the key 'provisioner.name' of config map 'efs-provisioner'>  Optional: false
+    Mounts:
+      /persistentvolumes from pv-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-d5xkp (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             False
+  ContainersReady   False
+  PodScheduled      True
+Volumes:
+  pv-volume:
+    Type:      NFS (an NFS mount that lasts the lifetime of a pod)
+    Server:    fs-510ec729.efs.us-east-2.amazonaws.com
+    Path:      /
+    ReadOnly:  false
+  default-token-d5xkp:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-d5xkp
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason       Age                  From                                                            Message
+  ----     ------       ----                 ----                                                            -------
+  Normal   Scheduled    <unknown>            fargate-scheduler                                               Successfully assigned default/efs-provisioner-6cd687c676-lp7vk to fargate-ip-192-168-172-135.us-east-2.compute.internal
+  Warning  FailedMount  78s (x2 over 3m32s)  kubelet, fargate-ip-192-168-172-135.us-east-2.compute.internal  Unable to mount volumes for pod "efs-provisioner-6cd687c676-lp7vk_default(7acf6089-4f37-46ce-8c09-c714e767cd53)": timeout expired waiting for volumes to attach or mount for pod "default"/"efs-provisioner-6cd687c676-lp7vk". list of unmounted volumes=[pv-volume]. list of unattached volumes=[pv-volume default-token-d5xkp]
+  Warning  FailedMount  72s                  kubelet, fargate-ip-192-168-172-135.us-east-2.compute.internal  MountVolume.SetUp failed for volume "pv-volume" : mount failed: exit status 32
+Mounting command: mount
+Mounting arguments: -t nfs fs-510ec729.efs.us-east-2.amazonaws.com:/ /var/lib/kubelet/pods/7acf6089-4f37-46ce-8c09-c714e767cd53/volumes/kubernetes.io~nfs/pv-volume
+Output: mount.nfs: Connection timed out
+ming@BCTWANGXI02-WXL:~/work/HPCC/HPCC_Builds/HPCC-23901-efs-helm-support/dockerfiles$ kubectl get pods
+NAME                                        READY   STATUS              RESTARTS   AGE
+efs-provisioner-6cd687c676-lp7vk            0/1     ContainerCreating   0          10m
+hthor-6686cbd8d9-5scs2                      0/1     Pending             0          10m
+mydali-56f56d75b-9mq6w                      0/1     Pending             0          10m
+myeclccserver-5fbd5f45d4-grnsr              0/1     Pending             0          10m
+myesp-7bc69f54dd-v9bgs                      0/1     Pending             0          10m
+roxie-768658657-27pg2                       0/1     Pending             0          10m
+roxie-cluster-slave-1-65dd58bb5c-phhlh      0/1     Pending             0          10m
+roxie-cluster-slave-2-5f6847d544-8gv56      0/1     Pending             0          10m
+roxie-cluster-toposerver-768f97945f-p94gr   1/1     Running             0          10m
+thor-agent-794f57cd58-pkshw                 0/1     Pending             0          10m
+thor-thoragent-776c89f6d9-vb6c7             0/1     Pending             0          10m
+ming@BCTWANGXI02-WXL:~/work/HPCC/HPCC_Builds/HPCC-23901-efs-helm-support/dockerfiles$ kubectl logs efs-provisioner-
+6cd687c676-lp7vk
+Error from server (BadRequest): container "efs-provisioner" in pod "efs-provisioner-6cd687c676-lp7vk" is waiting to start: ContainerCreating

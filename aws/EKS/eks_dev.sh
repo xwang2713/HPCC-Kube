@@ -35,6 +35,6 @@ eksctl create cluster \
 	--tags "application=hpccsystems,lifecycle=dev,market=hpccsystems" \
 	--tags "owner_email=xiaoming.wang@lexisnexis.com" \
 	--tags "support_email=xiaoming.wang@lexisnexis.com" \
-	--tags "product=hpccsystems,project=hpcc builds,service=ecs"
+	--tags "product=hpccsystems,project=hpcc builds,service=eks"
 # --region us-east-1 \
 # vpc setting can co-existi with zones settings

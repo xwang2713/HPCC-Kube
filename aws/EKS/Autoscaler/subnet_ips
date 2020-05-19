@@ -1,0 +1,8 @@
+AS              Subnet             IP              Security Group
+---------------------------------------------------------------------
+us-east-1b      subnet-9e08ecd3    172.31.25.47    sg-397a1a62 
+us-east-1a	subnet-05a2f12b    172.31.81.195   sg-397a1a62 
+us-east-1e	subnet-b836ae86    172.31.66.176   sg-397a1a62
+us-east-1c	subnet-eaacfdb6    172.31.33.213   sg-397a1a62 
+us-east-1f	subnet-33d7d93c    172.31.52.42	   sg-397a1a62
+us-east-1d	subnet-7b72261c    172.31.1.106	   sg-397a1a62

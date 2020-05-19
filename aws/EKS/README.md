@@ -25,7 +25,7 @@ t2, m3, m4, m5, c4, c5, i3, r3, r4, x1, p2 and p3
 EKS cluster requires at two Available Zones (AZs).
 Two samples are provided:
 . eks_1.sh
-. eks_vpc.sh: this try to use existing VPC/Subnets but doesn't work. We are working with AWS support on it now
+. eks_vpc.sh: this uses existing VPC/Subnets.
 
 ### Query EKS
 Query EKS cluster

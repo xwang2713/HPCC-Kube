@@ -14,7 +14,7 @@ Cloud:
 Persistence:
   Config:
     Enabled: true
-    StorageClass: gp2
+    StorageClass: ""
 
 #AWS:
 
@@ -99,7 +99,7 @@ Roxie:
   Cluster1:
     Name: roxie1
     ServiceName: svc-roxie-roxie1
-    Replicas: 2
+    Replicas: 24
     Server:
       Name: server
       Port: 9876
@@ -136,7 +136,7 @@ Thor:
   Cluster1:
     Name: thor1
     ServiceName: svc-thor-thor1
-    Replicas: 2
+    Replicas: 48
     Volume:
       Size: 40Gi
   Cluster2:

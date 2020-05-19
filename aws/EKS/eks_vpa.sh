@@ -32,7 +32,7 @@ eksctl create cluster \
 	--tags "application=hpccsystems,lifecycle=dev,market=hpccsystems" \
 	--tags "owner_email=xiaoming.wang@lexisnexis.com" \
         --tags "support_email=xiaoming.wang@lexisnexis.com" \
-	--tags "product=hpccsystems,project=hpcc builds,service=ecs"
+	--tags "product=hpccsystems,project=hpcc builds,service=eks"
 
 #	--vpc-public-subnets subnet-9e08ecd3 \
 #        --vpc-public-subnets subnet-eaacfdb6 \

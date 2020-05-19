@@ -4,21 +4,22 @@ kind: ConfigMap
 metadata:
   name: efs-provisioner
 data:
-  file.system.id: fs-9ba53979
-  aws.region: us-east-1
-  provisioner.name: example.com/aws-efs
+  file.system.id: {{ .Values.efs.id }}
+  aws.region: {{ .Values.efs.region }}
+  #provisioner.name: example.com/aws-efs
+  provisioner.name: aws.io/aws-efs
   dns.name: ""
 ---
 kind: Deployment
-#apiVersion: apps/v1
-apiVersion: extensions/v1beta1
+#apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 metadata:
   name: efs-provisioner
 spec:
   replicas: 1
-  #  selector:
-  #  matchLabels:
-  #    app: efs-provisioner
+  selector:
+    matchLabels:
+      app: efs-provisioner
   strategy:
     type: Recreate
   template:
@@ -58,65 +59,12 @@ spec:
       volumes:
         - name: pv-volume
           nfs:
-            # server: fs-9ba53979.efs.us-east-1.amazonaws.com
-            server: fs-739f91f3.efs.us-east-1.amazonaws.com
+            server: {{ .Values.efs.server }}
             path: /
 ---
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: "aws-efs"
-provisioner: example.com/aws-efs
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
   name: efs
-  annotations:
-    volume.beta.kubernetes.io/storage-class: "aws-efs"
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Mi
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: efs-data
-  annotations:
-    volume.beta.kubernetes.io/storage-class: "aws-efs"
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Mi
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: efs-mirror
-  annotations:
-    volume.beta.kubernetes.io/storage-class: "aws-efs"
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Mi
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: efs-queries
-  annotations:
-    volume.beta.kubernetes.io/storage-class: "aws-efs"
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Mi
----
+provisioner: aws.io/aws-efs
+#provisioner: example.com/aws-efs

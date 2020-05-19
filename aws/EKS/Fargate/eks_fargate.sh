@@ -33,28 +33,15 @@ ZONE6=us-east-1f
 VPC_PUB_SUBNET6=subnet-33d7d93c
 
 eksctl create cluster \
-	--name hpcc-1 \
+	--name hpcc-fargate \
 	--version 1.15 \
-	--region us-east-1 \
-	--nodegroup-name standard-workers \
-	--node-type m4.2xlarge \
-	--nodes 3 \
-	--nodes-min 1 \
-	--nodes-max 4 \
-	--node-volume-size 100 \
-	--node-ami auto \
-	--vpc-public-subnets ${VPC_PUB_SUBNET3} \
-	--vpc-public-subnets ${VPC_PUB_SUBNET6} \
-	--node-security-groups sg-397a1a62 \
+	--region us-east-2 \
+	--fargate \
 	--tags "application=hpccsystems,lifecycle=dev,market=hpccsystems" \
 	--tags "owner_email=xiaoming.wang@lexisnexis.com" \
 	--tags "support_email=xiaoming.wang@lexisnexis.com" \
-	--tags "product=hpccsystems,project=hpcc builds,service=eks"
+	--tags "product=hpccsystems,project=eks fargate,service=eks"
 
-# these two subnets works
 #--vpc-public-subnets subnet-eaacfdb6 \
 #--vpc-public-subnets subnet-9e08ecd3 \
 
-#--node-security-groups strings
-# --region us-east-1 \
-# vpc setting can co-existi with zones settings

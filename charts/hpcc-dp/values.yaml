@@ -4,8 +4,8 @@
 global:
   EFS:
     Region: us-east-1
-    Id: fs-9ba53979
-    Server: fs-9ba53979.efs.us-east-1.amazonaws.com
+    Id: fs-739f91f3
+    Server: fs-739f91f3.efs.us-east-1.amazonaws.com
     ClaimName:
       Default: efs
       Data: efs-data
@@ -21,7 +21,7 @@ Cloud:
 
 AWS:
   EFS:
-    Enabled: false
+    Enabled: true
 
 NameSpace:
   Name: default #hpcc-systems
