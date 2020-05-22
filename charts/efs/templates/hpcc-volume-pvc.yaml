@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dalistore-pvc
+spec:
+  accessModes:
+    - ReadWriteMany  # accessed from dali and sasha
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: efs
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: datastorage-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: efs
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dllserver-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi
+  storageClassName: efs

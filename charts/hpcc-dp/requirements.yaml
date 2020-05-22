@@ -1,4 +1,0 @@
-dependencies:
-- name: efs-server
-  version: 1.0.0
-  condition: AWS.EFS.Enabled
