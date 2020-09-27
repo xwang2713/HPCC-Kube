@@ -33,24 +33,23 @@ ZONE6=us-east-1f
 VPC_PUB_SUBNET6=subnet-33d7d93c
 
 eksctl create cluster \
-	--name eks-hpcc-2 \
-	--version 1.17 \
+	--name eks-hpcc-3 \
+	--version 1.16 \
 	--region us-east-1 \
 	--nodegroup-name standard-workers \
 	--node-type m4.2xlarge \
-	--nodes 2 \
-	--nodes-min 2 \
-	--nodes-max 4 \
+	--nodes 4 \
+	--nodes-min 4 \
+	--nodes-max 10 \
 	--node-volume-size 100 \
 	--node-ami auto \
 	--vpc-public-subnets ${VPC_PUB_SUBNET3} \
 	--vpc-public-subnets ${VPC_PUB_SUBNET6} \
 	--node-security-groups sg-397a1a62 \
-	--tags "application=hpccsystems,lifecycle=dev,market=us" \
-	--tags "business=dev,costcenter=st660" \
-	--tags "owner_email=xiaoming.wang@lexisnexis.com" \
+	--tags "application=hpccsystems,lifecycle=dev,market=research,bu=development" \
+	--tags "name=EKS cluster,owner_email=xiaoming.wang@lexisnexis.com" \
 	--tags "support_email=xiaoming.wang@lexisnexis.com" \
-	--tags "product=hpccsystems,project=hpcc builds,service=eks"
+	--tags "product=hpccsystems,project=research ,service=eks,application_owner=HPCCPlatformTeam"
 
 # these two subnets works
 #--vpc-public-subnets subnet-eaacfdb6 \
