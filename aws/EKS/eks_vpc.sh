@@ -33,13 +33,13 @@ ZONE6=us-east-1f
 VPC_PUB_SUBNET6=subnet-33d7d93c
 
 eksctl create cluster \
-	--name hpcc-1 \
-	--version 1.15 \
+	--name eks-hpcc-1 \
+	--version 1.16 \
 	--region us-east-1 \
 	--nodegroup-name standard-workers \
 	--node-type m4.2xlarge \
-	--nodes 3 \
-	--nodes-min 1 \
+	--nodes 2 \
+	--nodes-min 2 \
 	--nodes-max 4 \
 	--node-volume-size 100 \
 	--node-ami auto \

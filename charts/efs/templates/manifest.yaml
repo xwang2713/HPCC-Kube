@@ -59,7 +59,7 @@ spec:
       volumes:
         - name: pv-volume
           nfs:
-            server: {{ .Values.efs.server }}
+            server: {{ .Values.efs.id }}.efs.{{ .Values.efs.region }}.amazonaws.com
             path: /
 ---
 kind: StorageClass

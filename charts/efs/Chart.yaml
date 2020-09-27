@@ -1,7 +1,6 @@
 apiVersion: v2
-name: efs
-version: 0.1.0
 appVersion: 0.1.0
-description:
-#sources:
-#- https://github.com/hpcc-systems/HPCC-Platform/dockerfiels/hpcc/charts/efs
+description: An example Helm chart for launching a EFS cluster using Kubernetes
+name: efs
+type: application 
+version: 0.1.0

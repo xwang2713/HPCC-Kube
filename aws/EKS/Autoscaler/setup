@@ -33,4 +33,4 @@ NODES_START_NUM=2
 
 SECURITY_GROUPS="sg-397a1a62"
 
-COMMON_TAGS="application=hpccsystems,lifecycle=dev,market=hpccsystems,owner_email=xiaoming.wang@lexisnexis.com,support_email=xiaoming.wang@lexisnexis.com,product=hpccsystems,project=auto scaler nodes cluster,service=eks"
+COMMON_TAGS="application=eks cluster,lifecycle=dev,bu=developmet,market=research,owner_email=xiaoming.wang@lexisnexis.com,support_email=xiaoming.wang@lexisnexis.com,product=hpccsystems,project=auto scaler nodes cluster,service=eks"

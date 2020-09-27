@@ -4,6 +4,4 @@ efs:
   #region: <EFS region>
   region: us-east-1
   #id: <ID of EFS>
-  id: fs-739f91f3
-  #server: <EFS Server FQDN>
-  server: fs-739f91f3.efs.us-east-1.amazonaws.com
+  id: ""
