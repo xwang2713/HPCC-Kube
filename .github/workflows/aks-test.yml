@@ -1,0 +1,18 @@
+# File: .github/workflows/aks-test.yml
+
+on: [push]
+
+name: AKS-Test
+
+jobs:
+
+ deploy-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Install Azure Cli
+      run: |
+        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+    - name: Azure Login
+      run: az login -u ${{ secrets.AZURE_USERNAME }}   -p ${{ secrets.AZURE_PASSWORD }}
