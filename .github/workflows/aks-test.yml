@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - "azure-support"
-
 name: AKS-Test
 
 jobs:
