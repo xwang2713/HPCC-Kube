@@ -1,6 +1,9 @@
 # File: .github/workflows/aks-test.yml
 
-on: [push]
+on: 
+  push:
+    branches:
+      - "azure-support"
 
 name: AKS-Test
 
