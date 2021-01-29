@@ -1,5 +1,5 @@
 $subscription = "us-hpccplatform-dev"
-$resource_group = "aks-arc-gitops"
+$resource_group = "aks-arc-gitops-ming"
 $location = "eastus2"
 
 # Set subscription
